@@ -50,7 +50,7 @@ public:
                 auto ret = elem_idx.find(tgt - nums[j]);
                 if(ret == elem_idx.end())
                     continue;
-                if(ret->second <= j){ // 这里其实有问题，leetcode编译器(g++ 8.2, c++17)返回的是unordered_multimapd 多个重复<key,val>的最后一个，所以我的代码通过了。本地g++(?不确定真的是g++还是clang++的拷贝改名)和clang++返回的都是第一个的，所以应该再判断ret的下一个是不是也是同样值，或者ret的key是不是大于一个才行。
+                if(ret->second <= j){ // 这里其实有问题，unordered_multimap有多个重复key的话，leetcode编译器(g++ 8.2, c++17)返回的是的多个重复key的<key,val>的最后一个，所以我的代码通过了。本地g++(?不确定真的是g++还是clang++的拷贝改名)和clang++返回的都是第一个的，所以应该再判断ret的下一个是不是也是同样值，或者ret的key是不是大于一个才行。
                     // cout << "continue!" << ret->second << ", " << j << ", ";
                     continue;
                 }
